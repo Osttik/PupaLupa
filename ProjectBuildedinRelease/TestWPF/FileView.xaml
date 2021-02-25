@@ -1,0 +1,17 @@
+﻿<TabItem x:Class="TestWPF.FileView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TestWPF">
+    <TabItem.Header>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock x:Name="FileNameText" Margin="3">New File</TextBlock>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+            <Button x:Name="CloseButton" Content="X" Width="12" Height="20" Click="CloseFile"/>
+        </StackPanel>
+    </TabItem.Header>
+    <TabItem.Content>
+        <TextBox x:Name="TextBoxText" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" AcceptsReturn="True" Text=""/>
+    </TabItem.Content>
+</TabItem>
