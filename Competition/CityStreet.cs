@@ -11,6 +11,7 @@ namespace Competition
         public string Name { get; set; }
         public int StartIndex { get; set; }
         public int EndIndext { get; set; }
+        public int TimeToCross { get; set; }
         public Dictionary<string, CityStreet> CitiesToVyihaty { get; set; } = new Dictionary<string, CityStreet>();
         public Queue<Car> CarQueueStandby { get; set; } = new Queue<Car>();
         public List<CarPairTime> CarMoving { get; set; } = new List<CarPairTime>();

@@ -10,7 +10,13 @@ namespace Competition
     {
         static void Main(string[] args)
         {
-            var obj = DataRead.Read("D:/Temp Files/f.txt");
+            var data = DataRead.Read("D:/Temp Files/f.txt");
+
+            City city = new City();
+
+            city.SetData(data);
+
+            city.Simulate();
         }
     }
 }

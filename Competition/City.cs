@@ -28,5 +28,22 @@ namespace Competition
                 }
             }
         }
+
+        public void SetData(DataRead data)
+        {
+            Data = data;
+
+            foreach (var item in data.Streets)
+            {
+                CityStreet street = new CityStreet()
+                {
+                    Name = item.Name,
+                    StartIndex = item.StartIntersectionIndex,
+                    EndIndext = item.EndIntersectionIndex,
+                }
+            }
+        }
     }
 }
+
+TimeToCross
