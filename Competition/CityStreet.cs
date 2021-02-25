@@ -33,12 +33,20 @@ namespace Competition
                 IsGreen = true;
             }
 
+            List<CarPairTime> newList = new List<CarPairTime>();
             foreach (var pair in CarMoving)
             {
                 pair.TimeTillEnd -= 1;
+                if (pair.TimeTillEnd <= 0)
+                {
+                    CarQueueStandby.Enqueue(pair.Car);
+                }
+                else
+                {
+                    newList.Add(pair);
+                }
             }
-
-
+            CarMoving = newList;
         }
     }
 
