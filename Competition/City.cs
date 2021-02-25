@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,7 +8,7 @@ namespace Competition
     public class City
     {
         public int Score { get; set; }
-        public Dictionary<string, CityStreet> Streets { get; set; }
+        public Dictionary<string, CityStreet> Streets { get; set; } = new Dictionary<string, CityStreet>();
         public DataRead Data { get; set; }
 
         public void Simulate()
@@ -22,8 +21,46 @@ namespace Competition
 
                     if(street.IsGreen)
                     {
-                        var dequedCar = street.CarQueueStandby.Dequeue();
-                        var nextStreet = Streets[dequedCar.StreetsNames.Dequeue()];
+
+                    }
+                }
+            }
+        }
+
+        public void SetData(DataRead data)
+        {
+            Data = data;
+
+            foreach (var item in data.Streets)
+            {
+                CityStreet street = new CityStreet()
+                {
+                    Name = item.Name,
+                    StartIndex = item.StartIntersectionIndex,
+                    EndIndext = item.EndIntersectionIndex,
+                    TimeToCross = item.TimeToCross,
+                    IsGreen = false,
+                    Tiked = 0,
+                    TimeGreen = 1,
+                    TimeRed = 1,
+                };
+
+                Streets.Add(street.Name, street);
+            }
+
+            foreach (var item in data.Cars)
+            {
+                string name = item.StreetsNames.Dequeue();
+                Streets[name].CarQueueStandby.Enqueue(item);
+            }
+
+            foreach (var streetFrom in Streets.Values)
+            {
+                foreach (var streetTo in Streets.Values)
+                {
+                    if (streetFrom.EndIndext == streetTo.StartIndex)
+                    {
+                        streetFrom.CitiesToVyihaty.Add(streetTo.Name, streetTo);
                     }
                 }
             }
