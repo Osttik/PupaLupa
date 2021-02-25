@@ -21,7 +21,9 @@ namespace Competition
 
                     if(street.IsGreen)
                     {
-
+                        var dequedCar = street.CarQueueStandby.Dequeue();
+                        var nextStreet = Streets[dequedCar.StreetsNames.Dequeue()];
+                        nextStreet.CarMoving.Add(new CarPairTime() { Car = dequedCar, TimeTillEnd = nextStreet.TimeToCross });
                     }
                 }
             }
