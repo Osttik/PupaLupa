@@ -31,6 +31,8 @@ namespace Competition
         {
             Data = data;
 
+            Dictionary<int, int> a = new Dictionary<int, int>();
+
             foreach (var item in data.Streets)
             {
                 CityStreet street = new CityStreet()
@@ -62,6 +64,20 @@ namespace Competition
                     {
                         streetFrom.CitiesToVyihaty.Add(streetTo.Name, streetTo);
                     }
+                }
+            }
+
+            foreach (var item in Streets.Values)
+            {
+                if (a.ContainsKey(item.EndIndext))
+                {
+                    a[item.EndIndext] += 1;
+                    item.TimeRed = a[item.EndIndext];
+                }
+                else
+                {
+                    item.IsGreen = true;
+                    a[item.EndIndext] = 1;
                 }
             }
         }
