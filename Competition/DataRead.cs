@@ -60,7 +60,7 @@ namespace Competition
                 string[] values = lines[i].Trim().Split(' ');
                 Car car = new Car
                 {
-                    StreetsNames = new List<string>(values.ToList().GetRange(1, values.Length - 1))
+                    StreetsNames = new Queue<string>(new List<string>(values.ToList().GetRange(1, values.Length - 1)))
                 };
 
                 data.Cars.Add(car);
@@ -80,11 +80,11 @@ namespace Competition
 
     public class Car
     {
-        public List<string> StreetsNames { get; set; } 
+        public Queue<string> StreetsNames { get; set; } 
 
         public Car()
         {
-            StreetsNames = new List<string>();
+            StreetsNames = new Queue<string>();
         }
     }
 }
