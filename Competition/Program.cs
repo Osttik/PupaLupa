@@ -8,6 +8,7 @@ namespace Competition
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             var data = DataRead.Read("D:/Temp Files/f.txt");

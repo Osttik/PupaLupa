@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using static Competition.SimulationCounter;
 
 namespace Competition
 {
@@ -41,6 +38,10 @@ namespace Competition
                 pair.TimeTillEnd -= 1;
                 if (pair.TimeTillEnd <= 0)
                 {
+                    //
+                    CityLightsAwaitTime.Add(Name, CityLightsAwaitTime[Name] + CarQueueStandby.Count);
+                    //
+                    
                     CarQueueStandby.Enqueue(pair.Car);
                 }
                 else

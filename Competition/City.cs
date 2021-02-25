@@ -24,6 +24,7 @@ namespace Competition
                     {
                         var dequedCar = street.CarQueueStandby.Dequeue();
                         var nextStreet = Streets[dequedCar.StreetsNames.Dequeue()];
+                        nextStreet.CarMoving.Add(new CarPairTime() { Car = dequedCar, TimeTillEnd = nextStreet.TimeToCross });
                     }
                 }
             }
@@ -45,5 +46,3 @@ namespace Competition
         }
     }
 }
-
-TimeToCross
